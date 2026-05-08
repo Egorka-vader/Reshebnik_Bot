@@ -1,5 +1,6 @@
-TOKEN = '8215911285:AAFl3TbY2f8Lhic46GNaPZxqVe5TB3o6elw'
-AI_TOKEN = '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'
-ADMIN_ID = 6947365047
+TOKEN = 'Ваш токен телеграм бота'
+AI_TOKEN = Токен OpenRouter''
+ADMIN_ID = 
+gpt_code = 'Токен для изображений Pollinations'
 
 
