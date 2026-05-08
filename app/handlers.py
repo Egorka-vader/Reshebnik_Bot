@@ -6,7 +6,7 @@ from aiogram.filters import CommandStart,Command
 from aiogram.enums import ContentType
 from aiogram.types import InlineKeyboardButton,InlineKeyboardMarkup
 from aiogram.types import Message,CallbackQuery,LabeledPrice,PreCheckoutQuery,BufferedInputFile
-from config import TOKEN,ADMIN_ID,code_gpt
+from config import TOKEN,ADMIN_ID,gpt_code
 import easyocr
 
 from aiogram.fsm.state import State,StatesGroup
@@ -24,7 +24,7 @@ bot = Bot(token=TOKEN)
 Currency = 'XTR'
 ADMIN_ID = ADMIN_ID
 
-OPENROUTER_API_KEY = "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"
+OPENROUTER_API_KEY = gpt_code
 
 router = Router()
 
@@ -345,7 +345,7 @@ async def generaing_picture(message: Message, state: FSMContext):
         r = requests.post(
             "https://api.openai.com/v1/images/generations",
             headers={
-                "Authorization": "Bearer {code_gpt}"
+                f"Authorization": f"Bearer {OPENROUTER_API_KEY}"
             },
             json={"model": "dall-e-3", "prompt": prompt},
             timeout=30
