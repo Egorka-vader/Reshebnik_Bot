@@ -1,12 +1,12 @@
 import os
-from ChatComplete.database import SessionLocal, User, BroadCast
-from ChatComplete.generate import generate
+from database import SessionLocal, User, BroadCast
+from generate import generate
 from aiogram import F, Router,Bot
 from aiogram.filters import CommandStart,Command
 from aiogram.enums import ContentType
 from aiogram.types import InlineKeyboardButton,InlineKeyboardMarkup
 from aiogram.types import Message,CallbackQuery,LabeledPrice,PreCheckoutQuery,BufferedInputFile
-from ChatComplete.config import TOKEN,ADMIN_ID
+from config import TOKEN,ADMIN_ID,code_gpt
 import easyocr
 
 from aiogram.fsm.state import State,StatesGroup
@@ -345,7 +345,7 @@ async def generaing_picture(message: Message, state: FSMContext):
         r = requests.post(
             "https://api.openai.com/v1/images/generations",
             headers={
-                "Authorization": "Bearer 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"
+                "Authorization": "Bearer {code_gpt}"
             },
             json={"model": "dall-e-3", "prompt": prompt},
             timeout=30
